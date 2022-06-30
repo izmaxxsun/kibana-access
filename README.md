@@ -60,10 +60,7 @@ There was a difference in the identifiers between the ".kibana" index and the au
 
 To deal with that, added a Script processor to prepend "dashboard" to the ID. Whenever new logs stream in, the ID needed for lookup goes into the **dashboard_id** field.
 ```
-def result = '';
 String prefix = 'dashboard:';
-
-result = prefix + ctx['kibana.saved_object.id'];
 ctx['dashboard_id'] = prefix + ctx.kibana.saved_object.id
 ```
 #### Add an Enrichment Policy
